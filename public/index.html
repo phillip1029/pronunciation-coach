@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pronunciation Coach</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Pronunciation Coach</h1>
+      <p class="tagline">
+        Read the prompt aloud and receive instant feedback on your English pronunciation.
+      </p>
+    </header>
+
+    <main class="layout">
+      <section class="card">
+        <h2>1. Pick a passage</h2>
+        <label class="field">
+          <span>Practice material</span>
+          <select id="passageSelect"></select>
+        </label>
+        <label class="field">
+          <span>or paste your own</span>
+          <textarea id="customPassage" rows="4" placeholder="Paste text here..."></textarea>
+        </label>
+        <button id="loadCustom" class="secondary">Use custom text</button>
+      </section>
+
+      <section class="card">
+        <h2>2. Record yourself</h2>
+        <p id="recordingHint" class="hint">Press record and read the passage out loud.</p>
+        <div class="controls">
+          <button id="recordButton" class="primary">Start recording</button>
+          <button id="resetButton" class="secondary" disabled>Reset</button>
+        </div>
+        <div class="status" id="status"></div>
+        <p class="hint small" id="browserWarning"></p>
+      </section>
+
+      <section class="card">
+        <h2>3. Compare and improve</h2>
+        <div class="comparison">
+          <div>
+            <h3>Target passage</h3>
+            <p id="targetText" class="text-block"></p>
+          </div>
+          <div>
+            <h3>Your pronunciation</h3>
+            <p id="recognizedText" class="text-block muted"></p>
+          </div>
+        </div>
+        <div id="feedback" class="feedback"></div>
+      </section>
+
+      <section class="card voice-card">
+        <h2>4. Get AI voice coaching</h2>
+        <p class="hint">
+          Add an OpenAI API key (never stored) to hear a lively coaching response powered by the latest voice agents.
+        </p>
+        <div class="field-group">
+          <label class="field">
+            <span>OpenAI API key</span>
+            <input
+              id="apiKeyInput"
+              type="password"
+              placeholder="sk-..."
+              autocomplete="off"
+            />
+          </label>
+          <label class="field">
+            <span>Voice</span>
+            <select id="voiceSelect">
+              <option value="alloy">Alloy (balanced)</option>
+              <option value="ember">Ember (energetic)</option>
+              <option value="sol">Sol (warm)</option>
+            </select>
+          </label>
+        </div>
+        <button id="voiceButton" class="primary" disabled>Generate AI feedback</button>
+        <p id="voiceStatus" class="hint small"></p>
+        <div id="voiceResponse" class="voice-response hidden">
+          <p id="voiceText" class="text-block"></p>
+          <audio id="voiceAudio" controls></audio>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Pronunciation analysis uses your browser's speech recognition. For best results,
+        use Chrome on desktop and speak clearly into a microphone.
+      </p>
+    </footer>
+
+    <template id="feedbackTemplate">
+      <div class="feedback-card">
+        <h3>Pronunciation tips</h3>
+        <ul></ul>
+      </div>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
