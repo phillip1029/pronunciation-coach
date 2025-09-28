@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <title>Pronunciation Coach</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎤</text></svg>" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -29,8 +33,8 @@
       </section>
 
       <section class="card">
-        <h2>2. Record yourself</h2>
-        <p id="recordingHint" class="hint">Press record and read the passage out loud.</p>
+        <h2>2. Record yourself with AI analysis</h2>
+        <p id="recordingHint" class="hint">Press record and read the passage out loud. AI will analyze your pronunciation in real-time.</p>
         <div class="controls">
           <button id="recordButton" class="primary">Start recording</button>
           <button id="resetButton" class="secondary" disabled>Reset</button>
@@ -40,35 +44,26 @@
       </section>
 
       <section class="card">
-        <h2>3. Compare and improve</h2>
+        <h2>3. AI Pronunciation Analysis</h2>
         <div class="comparison">
           <div>
             <h3>Target passage</h3>
             <p id="targetText" class="text-block"></p>
           </div>
           <div>
-            <h3>Your pronunciation</h3>
-            <p id="recognizedText" class="text-block muted"></p>
+            <h3>What you said</h3>
+            <p id="recognizedText" class="text-block muted">Your transcribed speech will appear here...</p>
           </div>
         </div>
         <div id="feedback" class="feedback"></div>
       </section>
 
       <section class="card voice-card">
-        <h2>4. Get AI voice coaching</h2>
+        <h2>4. AI Voice Settings</h2>
         <p class="hint">
-          Add an OpenAI API key (never stored) to hear a lively coaching response powered by the latest voice agents.
+          Choose your preferred AI voice for pronunciation feedback. The server handles OpenAI API authentication.
         </p>
         <div class="field-group">
-          <label class="field">
-            <span>OpenAI API key</span>
-            <input
-              id="apiKeyInput"
-              type="password"
-              placeholder="sk-..."
-              autocomplete="off"
-            />
-          </label>
           <label class="field">
             <span>Voice</span>
             <select id="voiceSelect">
@@ -78,8 +73,7 @@
             </select>
           </label>
         </div>
-        <button id="voiceButton" class="primary" disabled>Generate AI feedback</button>
-        <p id="voiceStatus" class="hint small"></p>
+        <p id="voiceStatus" class="hint small">Real-time AI feedback is integrated into the recording process.</p>
         <div id="voiceResponse" class="voice-response hidden">
           <p id="voiceText" class="text-block"></p>
           <audio id="voiceAudio" controls></audio>
